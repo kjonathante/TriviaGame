@@ -1,3 +1,18 @@
+let question = [
+  {
+    "question" : "question 1",
+    "choices" : [ 
+      "choice 0 - 1",
+      "choice 0 - 2",
+      "choice 0 - 3",
+      "choice 0 - 4"
+    ],
+    "hint" : "hint 1",
+    "answer" : 1,
+    "video" : "..."
+  }
+];
+
 
 const questionDuration = 5;
 const answerDuration = 3 ;
