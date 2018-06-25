@@ -8,70 +8,143 @@ let questions = [
       "Their tails and legs"
     ],
     "hint" : "...",
-    "answer" : 1,
+    "answer" : 0,
+    "video" : "..."
+  },
+  {
+    "question" : "What will happen to a goldfish if it's kept in a dark room?",
+    "choices" : [ 
+      "It will go blind",
+      "It will die",
+      "It will turn pale",
+      "It will become depressed"
+    ],
+    "hint" : "...",
+    "answer" : 2,
     "video" : "..."
   }
 ];
 
+let correctCounter;
+let incorrectCounter;
+let unansweredCounter;
+
+let questionIndex;
 
 const questionDuration = 5;
 const answerDuration = 3 ;
 let intervalID;
-let questionCounter = 0;
-let questionTotal = 2
 
-$('#start').on('click', function() {
+$('#root').before( $('<p>Time Remaining: <span id="countdown"></span> Seconds</p>').attr('id','timer').hide() );
+$('#root').after( $('<button>').text('Start').attr('id','start') );
+
+$('.container').on('click', '#start', function() {
+  $(this).remove();
   initializeGame();
   showQuestion();
 });
 
 function initializeGame () {
-  questionCounter = 0;
+  correctCounter=0
+  incorrectCounter=0;
+  unansweredCounter=0;
+
+  questionIndex = 0;
+  $('#timer').show();
 }
 
 function showQuestion() {
-  let countdown = questionDuration;
+  const question = questions[questionIndex]; // question object
 
-  const question = questions[questionCounter]; // question object
-  const answer = question.answer;
+  // reference #root
+  const $root = $('#root');
+  $root.empty();
 
-  $('#question').text( question.question);
-  const $choicesDiv = $('#choices');
+  //append question
+  $root.append( $('<h3>').text(question.question).attr('id', 'question') );
+
+  //append div for choices
+  const $choicesDiv = $('<div>').attr('id','choices');
   let $choice;
   $.each( question.choices, function(key, val) {
-    $choice = $('<h3>').text(val).attr('data-id', key).addClass('choice');
+    $choice = $('<h3>').text(val).attr('data-id', key).addClass('choice'); // create and display choice
     $choicesDiv.append( $choice );
-    console.log(key, val);
   });
+  $root.append( $choicesDiv );
 
-  $('#countdown').text( countdown );
-  // intervalID = setInterval( function() {
-  //   countdown--;
-  //   $('#countdown').text( countdown );
-  //   if (countdown==0) {
-  //     clearInterval( intervalID );
-  //     showAnswer();
-  //   }
-  // }, 1000);
+  let countdown = questionDuration;
+  $('#countdown').text( countdown ); // display duration countdown
+  intervalID = setInterval( function() {
+    countdown--;
+    $('#countdown').text( countdown );
+    if (countdown==0) {
+      //stop timer
+      clearInterval( intervalID );
+
+      showAnswer();
+    }
+  }, 1000);
 
   $($choicesDiv).on('click', '.choice', function() {
-    console.log(this);
-    console.log(answer);
+    //stop timer
+    clearInterval( intervalID );
+
+    let userChoice = $(this).attr('data-id');
+    showAnswer(userChoice);
   });
 }
 
-function showAnswer() {
+function showAnswer(userChoice) {
+
+  const rightAnswer = questions[questionIndex].answer;
+
+  let msg;
+  if (typeof userChoice == 'undefined') { // timeout
+    msg = "Out Of Time!";
+    unansweredCounter++;
+  } else {
+    if ( rightAnswer == userChoice ) { // correct
+      msg = "Correct!";
+      correctCounter++;
+    } else { // incorrect
+      msg = "Nope";
+      incorrectCounter++;
+    }
+  }
+
+  const $root = $('#root');
+  $root.empty();
+  $root.append( $('<h3>').text( msg ).attr('id', 'msg') );
+  if (rightAnswer != userChoice) {
+    $root.append( $('<h3>').text( 'The correct answer was: ' + questions[questionIndex].choices[rightAnswer]) );
+  }
+
   let countdown = answerDuration;
-  $('#countdown').text( 'Answer ' + questionCounter );
   intervalID = setInterval( function() {
     countdown--;
-    //$('#countdown').text( countdown );
     if (countdown==0) {
+      // stop timer
       clearInterval( intervalID );
-      if (questionCounter < questionTotal) {
-        questionCounter++;
+      // reach last question
+      if (questionIndex < (questions.length-1)) {
+        questionIndex++;
         showQuestion();
+      } else {
+        showResults();
       }
     }
   }, 1000);
+}
+
+function showResults() {
+  const $root = $('#root');
+  $root.empty();
+
+  $root.append( $('<p>').text("All done, here's how you did!") );
+  $root.append( $('<p>').text("Correct Answers: " + correctCounter) );
+  $root.append( $('<p>').text("Incorrect Answers: " + incorrectCounter) );
+  $root.append( $('<p>').text("Unanswered: " + unansweredCounter) );
+
+  $root.after( $('<button>').text('Start Over').attr('id','start') );
+
 }
