@@ -1,13 +1,13 @@
-let question = [
+let questions = [
   {
-    "question" : "question 1",
+    "question" : "Where do kangaroos get their balance from?",
     "choices" : [ 
-      "choice 0 - 1",
-      "choice 0 - 2",
-      "choice 0 - 3",
-      "choice 0 - 4"
+      "Their tails",
+      "Their legs",
+      "Their whole body",
+      "Their tails and legs"
     ],
-    "hint" : "hint 1",
+    "hint" : "...",
     "answer" : 1,
     "video" : "..."
   }
@@ -31,15 +31,33 @@ function initializeGame () {
 
 function showQuestion() {
   let countdown = questionDuration;
+
+  const question = questions[questionCounter]; // question object
+  const answer = question.answer;
+
+  $('#question').text( question.question);
+  const $choicesDiv = $('#choices');
+  let $choice;
+  $.each( question.choices, function(key, val) {
+    $choice = $('<h3>').text(val).attr('data-id', key).addClass('choice');
+    $choicesDiv.append( $choice );
+    console.log(key, val);
+  });
+
   $('#countdown').text( countdown );
-  intervalID = setInterval( function() {
-    countdown--;
-    $('#countdown').text( countdown );
-    if (countdown==0) {
-      clearInterval( intervalID );
-      showAnswer();
-    }
-  }, 1000);
+  // intervalID = setInterval( function() {
+  //   countdown--;
+  //   $('#countdown').text( countdown );
+  //   if (countdown==0) {
+  //     clearInterval( intervalID );
+  //     showAnswer();
+  //   }
+  // }, 1000);
+
+  $($choicesDiv).on('click', '.choice', function() {
+    console.log(this);
+    console.log(answer);
+  });
 }
 
 function showAnswer() {
