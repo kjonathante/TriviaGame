@@ -9,7 +9,7 @@ let questions = [
     ],
     "hint" : "...",
     "answer" : 0,
-    "video" : "..."
+    "video" : "assets/videos/lion.webm"
   },
   {
     "question" : "What will happen to a goldfish if it's kept in a dark room?",
@@ -122,6 +122,11 @@ function showAnswer(userChoice) {
       .attr('id', 'msg2') 
     );
   }
+  $root.append( $('<video>')
+    .attr('src', questions[questionIndex].video)
+    .attr('autoplay', 'true')
+  );
+
 
   let countdown = answerDuration;
   intervalID = setInterval( function() {
