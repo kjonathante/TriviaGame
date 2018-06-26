@@ -1,29 +1,30 @@
-let questions = [
-  {
-    "question" : "Where do kangaroos get their balance from?",
-    "choices" : [ 
-      "Their tails",
-      "Their legs",
-      "Their whole body",
-      "Their tails and legs"
-    ],
-    "hint" : "...",
-    "answer" : 0,
-    "video" : "assets/videos/lion.webm"
-  },
-  {
-    "question" : "What will happen to a goldfish if it's kept in a dark room?",
-    "choices" : [ 
-      "It will go blind",
-      "It will die",
-      "It will turn pale",
-      "It will become depressed"
-    ],
-    "hint" : "...",
-    "answer" : 2,
-    "video" : "..."
-  }
-];
+let questions;
+// let questions = [
+//   {
+//     "question" : "Where do kangaroos get their balance from?",
+//     "choices" : [ 
+//       "Their tails",
+//       "Their legs",
+//       "Their whole body",
+//       "Their tails and legs"
+//     ],
+//     "hint" : "...",
+//     "answer" : 0,
+//     "video" : "assets/videos/lion.webm"
+//   },
+//   {
+//     "question" : "What will happen to a goldfish if it's kept in a dark room?",
+//     "choices" : [ 
+//       "It will go blind",
+//       "It will die",
+//       "It will turn pale",
+//       "It will become depressed"
+//     ],
+//     "hint" : "...",
+//     "answer" : 2,
+//     "video" : "..."
+//   }
+// ];
 
 let correctCounter;
 let incorrectCounter;
@@ -37,7 +38,12 @@ let intervalID;
 
 $('#root').before( $('<p>Time Remaining: <span id="countdown"></span> Seconds</p>').attr('id','timer').hide() );
 //$('#root').after( $('<button>').text('Start').attr('id','start') );
-addButton('Start');
+
+$.getJSON( "assets/json/questions.json", function( data ) {
+  questions=data;
+  console.log(questions);
+  addButton('Start');
+});
 
 $('.container').on('click', '#start', function() {
   $(this).remove();
