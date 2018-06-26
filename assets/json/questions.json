@@ -22,5 +22,77 @@
     "hint" : "...",
     "answer" : 2,
     "video" : "..."
+  },
+  {
+    "question" : "How long can a tarantula spider survive without food?",
+    "choices" : [ 
+      "Three days at most",
+      "Maybe a week",
+      "Up to a whole two years",
+      "Probably forever"
+    ],
+    "hint" : "...",
+    "answer" : 2,
+    "video" : "..."
+  },
+  {
+    "question" : "Which animal can last longer without water?",
+    "choices" : [ 
+      "Rats",
+      "Giraffes",
+      "Camels",
+      "Elephants"
+    ],
+    "hint" : "...",
+    "answer" : 0,
+    "video" : "..."
+  },
+  {
+    "question" : "How many eyes does a butterfly have?",
+    "choices" : [ 
+      "50,000",
+      "12,000",
+      "8",
+      "100"
+    ],
+    "hint" : "...",
+    "answer" : 1,
+    "video" : "..."
+  },
+  {
+    "question" : "What's a dik-dik?",
+    "choices" : [ 
+      "An antelope",
+      "A rat",
+      "A lemur",
+      "A bird"
+    ],
+    "hint" : "...",
+    "answer" : 0,
+    "video" : "..."
+  },
+  {
+    "question" : "Which one of these animal species is older?",
+    "choices" : [ 
+      "Alligators",
+      "Dinosaurs",
+      "Hippos",
+      "Sharks"
+    ],
+    "hint" : "...",
+    "answer" : 3,
+    "video" : "..."
+  },
+  {
+    "question" : "How many times per second can a woodpecker peck?",
+    "choices" : [ 
+      "10",
+      "50",
+      "5",
+      "20"
+    ],
+    "hint" : "...",
+    "answer" : 3,
+    "video" : "..."
   }
 ]
