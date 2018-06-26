@@ -6,10 +6,83 @@
           box-sizing: border-box;
 }
 
+body {
+  text-align: center;
+  color: #223a5e;
+}
+
+/* box-shadow h-offset v-offset blur spred color */
+.container {
+  width: 768px;
+  height: 429px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #9c9a40;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#start {
+  color: white;
+  background-color: #005960;
+  font-size: 4rem;
+  line-height: 5rem;
+  border: none;
+  margin: 0 auto;
+  width: 20rem;
+  display: block;
+}
+
+#timer {
+  /* border: 1px solid black; */
+  line-height: 3rem;
+  margin-bottom: 1rem;
+
+}
+
+#question {
+  /* border: 1px solid black; */
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 3rem;
+  margin-bottom: 1rem;
+}
+
+#choices {
+  width: 80%;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+  /* padding: 10px 0; */
+}
+
 .choice {
   cursor: pointer;
+  border: 1px solid transparent;
+  font-size: 1.5rem;
+  line-height: 3.5rem;
+  /* margin-bottom: .2rem; */
+}
+
+.choice:last-child {
+  margin-bottom: 0;
 }
 
 .choice:hover {
-  color: red;
+  border: 1px solid #898e8c;
+  background-color: #005960;
+  color: white;
+}
+
+#msg {
+  /* border: 1px solid black; */
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 3rem;
+  margin-bottom: 1rem;
+}
+
+#msg2 {
+  /* border: 1px solid black; */
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  margin-bottom: 1rem;
 }

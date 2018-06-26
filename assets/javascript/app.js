@@ -36,7 +36,8 @@ const answerDuration = 3 ;
 let intervalID;
 
 $('#root').before( $('<p>Time Remaining: <span id="countdown"></span> Seconds</p>').attr('id','timer').hide() );
-$('#root').after( $('<button>').text('Start').attr('id','start') );
+//$('#root').after( $('<button>').text('Start').attr('id','start') );
+addButton('Start');
 
 $('.container').on('click', '#start', function() {
   $(this).remove();
@@ -107,7 +108,7 @@ function showAnswer(userChoice) {
       msg = "Correct!";
       correctCounter++;
     } else { // incorrect
-      msg = "Nope";
+      msg = "Nope!";
       incorrectCounter++;
     }
   }
@@ -116,7 +117,10 @@ function showAnswer(userChoice) {
   $root.empty();
   $root.append( $('<h3>').text( msg ).attr('id', 'msg') );
   if (rightAnswer != userChoice) {
-    $root.append( $('<h3>').text( 'The correct answer was: ' + questions[questionIndex].choices[rightAnswer]) );
+    $root.append( $('<h2>')
+      .text( 'The correct answer was: ' + questions[questionIndex].choices[rightAnswer])
+      .attr('id', 'msg2') 
+    );
   }
 
   let countdown = answerDuration;
@@ -140,11 +144,15 @@ function showResults() {
   const $root = $('#root');
   $root.empty();
 
-  $root.append( $('<p>').text("All done, here's how you did!") );
-  $root.append( $('<p>').text("Correct Answers: " + correctCounter) );
-  $root.append( $('<p>').text("Incorrect Answers: " + incorrectCounter) );
-  $root.append( $('<p>').text("Unanswered: " + unansweredCounter) );
+  $root.append( $('<p>').text("All done, here's how you did!").attr('id','msg') );
+  $root.append( $('<p>').text("Correct Answers: " + correctCounter).attr('id','msg2') );
+  $root.append( $('<p>').text("Incorrect Answers: " + incorrectCounter).attr('id','msg2'));
+  $root.append( $('<p>').text("Unanswered: " + unansweredCounter).attr('id','msg2') );
 
-  $root.after( $('<button>').text('Start Over').attr('id','start') );
+  //$root.after( $('<button>').text('Start Over').attr('id','start') );
+  addButton('Start Over');
+}
 
+function addButton(str) {
+  $('#root').after( $('<div>').text(str).attr('id','start') );
 }
