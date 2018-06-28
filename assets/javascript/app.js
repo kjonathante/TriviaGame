@@ -39,9 +39,16 @@ let intervalID;
 $('#root').before( $('<p>Time Remaining: <span id="countdown"></span> Seconds</p>').attr('id','timer').hide() );
 //$('#root').after( $('<button>').text('Start').attr('id','start') );
 
-$.getJSON( "assets/json/questions.json", function( data ) {
+// $.getJSON( "assets/json/questions.json", function( data ) {
+//   questions=data;
+//   console.log(questions);
+//   addButton('Start');
+// });
+
+$.ajax({
+  url: "assets/json/questions.json"
+}).then(function(data) {
   questions=data;
-  console.log(questions);
   addButton('Start');
 });
 

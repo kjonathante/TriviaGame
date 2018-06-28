@@ -11,6 +11,10 @@ body {
   color: #223a5e;
 }
 
+video {
+  width: 320px;
+}
+
 /* box-shadow h-offset v-offset blur spred color */
 .container {
   width: 768px;
