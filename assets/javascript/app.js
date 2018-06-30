@@ -32,7 +32,7 @@ let unansweredCounter;
 
 let questionIndex;
 
-const questionDuration = 5;
+const questionDuration = 10;
 const answerDuration = 3 ;
 let intervalID;
 

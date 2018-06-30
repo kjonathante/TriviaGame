@@ -9,7 +9,7 @@
     ],
     "hint" : "...",
     "answer" : 0,
-    "video" : "assets/videos/lion.webm"
+    "video" : "assets/videos/Kangaroo.webm"
   },
   {
     "question" : "What will happen to a goldfish if it's kept in a dark room?",
@@ -21,7 +21,7 @@
     ],
     "hint" : "...",
     "answer" : 2,
-    "video" : "..."
+    "video" : "assets/videos/Goldfish.webm"
   },
   {
     "question" : "How long can a tarantula spider survive without food?",
@@ -33,7 +33,7 @@
     ],
     "hint" : "...",
     "answer" : 2,
-    "video" : "..."
+    "video" : "assets/videos/Tarantula.webm"
   },
   {
     "question" : "Which animal can last longer without water?",
@@ -45,7 +45,7 @@
     ],
     "hint" : "...",
     "answer" : 0,
-    "video" : "..."
+    "video" : "assets/videos/Camel.webm"
   },
   {
     "question" : "How many eyes does a butterfly have?",
@@ -57,7 +57,7 @@
     ],
     "hint" : "...",
     "answer" : 1,
-    "video" : "..."
+    "video" : "assets/videos/Butterfly.webm"
   },
   {
     "question" : "What's a dik-dik?",
@@ -69,7 +69,7 @@
     ],
     "hint" : "...",
     "answer" : 0,
-    "video" : "..."
+    "video" : "assets/videos/Antelope.webm"
   },
   {
     "question" : "Which one of these animal species is older?",
@@ -81,7 +81,7 @@
     ],
     "hint" : "...",
     "answer" : 3,
-    "video" : "..."
+    "video" : "assets/videos/Shark.webm"
   },
   {
     "question" : "How many times per second can a woodpecker peck?",
@@ -93,6 +93,6 @@
     ],
     "hint" : "...",
     "answer" : 3,
-    "video" : "..."
+    "video" : "assets/videos/Pecker.webm"
   }
 ]
